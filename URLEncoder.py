@@ -56,7 +56,14 @@ def main() -> None:
         Clears the text in the input textbox
         '''
         textbox.delete("1.0", tk.END)
-        
+
+    
+    def paste_input() -> None:
+        '''
+        Updates the input textbox with the content of the user's clipboard
+        '''
+        textbox.delete("1.0", tk.END)
+        textbox.insert(tk.END, pyperclip.paste())
 
 
     root = tk.Tk()
@@ -78,6 +85,9 @@ def main() -> None:
 
     decode_button = tk.Button(button_container, text="Decode", font=("Calibri", 18), command=decode_text)
     decode_button.pack(side=tk.LEFT, padx=10)
+
+    paste_button = tk.Button(button_container, text="Paste", font=("Calibri", 18), command=paste_input)
+    paste_button.pack(side=tk.LEFT, padx=10)
 
     clear_input_button = tk.Button(button_container, text="Clear", font=("Calibri", 18), command=clear_input)
     clear_input_button.pack(side=tk.LEFT, padx=10)
