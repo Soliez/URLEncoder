@@ -4,7 +4,6 @@ from urllib.parse import quote, unquote
 
 
 
-
 def main() -> None:
     '''
     The UI's main logic
@@ -57,7 +56,17 @@ def main() -> None:
         '''
         textbox.delete("1.0", tk.END)
 
-    
+
+    def clear_all() -> None:
+        '''
+        Clears the text in both the input and result textboxes
+        '''
+        textbox.delete("1.0", tk.END)
+        result_box.config(state=tk.NORMAL)
+        result_box.delete("1.0", tk.END)
+        result_box.config(state=tk.DISABLED)
+
+
     def paste_input() -> None:
         '''
         Updates the input textbox with the content of the user's clipboard
@@ -104,7 +113,11 @@ def main() -> None:
     clear_button = tk.Button(cc_button_container, text="Clear", font=("Calibri", 18), command=clear_result)
     clear_button.pack(side=tk.LEFT, padx=10)
 
+    clear_all_button = tk.Button(cc_button_container, text="Clear All", font=("Calibri", 18), command=clear_all)
+    clear_all_button.pack(side=tk.LEFT, padx=10)
+
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()
