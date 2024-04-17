@@ -12,7 +12,7 @@ def main() -> None:
 
     def encode_text() -> None:
         '''
-        Function to encode the text from the textbox
+        Encodes the text from the input textbox
         '''
         text = textbox.get("1.0", tk.END).strip()  
         encoded_text = quote(text)           
@@ -24,7 +24,7 @@ def main() -> None:
 
     def decode_text() -> None:
         '''
-        Function to decode the text from the textbox
+        Decodes the text from the input textbox
         '''
         text = textbox.get("1.0", tk.END).strip()  
         decoded_text = unquote(text)           
@@ -36,7 +36,7 @@ def main() -> None:
 
     def copy_to_clipboard() -> None:
         '''
-        Copies the text from the textbox to the user's clipboard
+        Copies the text from the results textbox to the user's clipboard
         '''
         result_box_text = result_box.get("1.0", tk.END).strip()
         pyperclip.copy(result_box_text)
@@ -44,11 +44,21 @@ def main() -> None:
 
     def clear_result() -> None:
         '''
-        Clears the text in the texbox
+        Clears the text in the results textbox
         '''
         result_box.config(state=tk.NORMAL)
         result_box.delete("1.0", tk.END)
         result_box.config(state=tk.DISABLED)
+
+    
+    def clear_input() -> None:
+        '''
+        Clears the text in the input textbox
+        '''
+        textbox.delete("1.0", tk.END)
+        
+
+
     root = tk.Tk()
 
     root.geometry("500x500")
@@ -68,6 +78,9 @@ def main() -> None:
 
     decode_button = tk.Button(button_container, text="Decode", font=("Calibri", 18), command=decode_text)
     decode_button.pack(side=tk.LEFT, padx=10)
+
+    clear_input_button = tk.Button(button_container, text="Clear", font=("Calibri", 18), command=clear_input)
+    clear_input_button.pack(side=tk.LEFT, padx=10)
 
     result_box = tk.Text(root, height=5, font=("Calibri", 16), state=tk.DISABLED)
     result_box.pack()
