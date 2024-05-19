@@ -78,6 +78,7 @@ def main() -> None:
     root = tk.Tk()
 
     root.geometry("500x500")
+    root.resizable(width=False, height=False)
     root.title("URL Encoder")
 
     label = tk.Label(root, text="URL Encoder", font=("Calibri",18))
@@ -89,7 +90,7 @@ def main() -> None:
     button_container = tk.Frame(root)
     button_container.pack(pady=10)
 
-    encode_button = tk.Button(button_container, text="Encode", font=("Calibri",18), command=encode_text)
+    encode_button = tk.Button(button_container, text="Encode",font=("Calibri", 18), command=encode_text)
     encode_button.pack(side=tk.LEFT, padx=10)
 
     decode_button = tk.Button(button_container, text="Decode", font=("Calibri", 18), command=decode_text)
